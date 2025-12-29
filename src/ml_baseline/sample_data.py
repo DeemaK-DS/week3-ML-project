@@ -34,7 +34,7 @@ def make_sample_feature_table(*, root: Path | None = None, n_users: int = 1000, 
     
      
     df = pd.DataFrame({
-        "user_id": user_id,
+        "student_id": user_id,
         "study_hours": study_hours,
         "gender": gender,
         "marks": marks.round(1),

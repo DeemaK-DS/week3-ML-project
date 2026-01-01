@@ -1,7 +1,7 @@
-# Week 3 — Ship-Ready Baseline ML System (Train + Evaluate + Predict)
+# Week 3 — Baseline ML System (Train + Evaluate + Predict)
 
-Turn a feature table into a **reproducible, offline-first ML baseline system** using a clean CLI.  
-This project supports data generation, model training with versioned artifacts, and batch prediction with schema guardrails.
+This project aims to **predict students’ academic grades** using a **baseline machine learning system** built with a clean, CLI-driven workflow.  
+It demonstrates end-to-end ML system design, including synthetic data generation, reproducible model training with versioned artifacts, and batch prediction with schema guardrails.
 
 ## Data Description
 

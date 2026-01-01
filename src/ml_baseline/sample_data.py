@@ -11,6 +11,7 @@ from .io import best_effort_ext, write_tabular
 
 def make_sample_feature_table(*, root: Path | None = None, n_users: int = 1000, seed: int = 42) -> Path:
     """Write a small, deterministic feature table for local demos."""
+    
     paths = Paths.from_repo_root() if root is None else Paths(root=root)
     paths.data_processed_dir.mkdir(parents=True, exist_ok=True)
 
@@ -30,6 +31,7 @@ def make_sample_feature_table(*, root: Path | None = None, n_users: int = 1000, 
         else:
             return 0   # fail
 
+
     grade = [to_grade(m) for m in marks]
     
      
@@ -42,8 +44,8 @@ def make_sample_feature_table(*, root: Path | None = None, n_users: int = 1000, 
         "mother_edu": Medu,
         "grade": grade,
     })
-
-
+    
+    
     ext = best_effort_ext()
     out_path = paths.data_processed_dir / f"features{ext}"
     write_tabular(df, out_path)

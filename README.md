@@ -1,15 +1,48 @@
 # Week 3 — Ship-Ready Baseline ML System (Train + Evaluate + Predict)
 
-Turn a feature table into a **reproducible, CPU-friendly ML baseline** with:
-- a training command that saves versioned artifacts, and
-- a batch prediction command with schema guardrails.
+Turn a feature table into a **reproducible, offline-first ML baseline system** using a clean CLI.  
+This project supports data generation, model training with versioned artifacts, and batch prediction with schema guardrails.
 
-This repo is designed to be:
-- **offline-first** (no external services required),
-- **reproducible** (run metadata + environment capture),
-- **portfolio-ready** (clean structure + model card).
+## Data Description
 
----
+This project uses a **synthetic student performance dataset** generated for educational and demonstration purposes.
+
+### Unit of analysis
+- One row represents **one student**
+
+### Identifier
+- **`student_id`**
+  - Unique identifier for each student
+  - Treated as a **passthrough ID**
+  - Not used as a model feature, but preserved in prediction outputs
+
+### Features
+The following columns are used as **model features (X)**:
+- **`study_hours`** – number of hours spent studying
+- **`gender`** – student gender (categorical)
+- **`marks`** – numeric exam score
+- **`father_edu`** – father’s education level
+- **`mother_edu`** – mother’s education level
+
+### Target variable
+- **`grade`** (classification target)
+  - Represents the student’s final academic outcome
+  - Used as the label during model training and evaluation
+
+### Data format
+- Input data is stored under `data/processed/`
+- Supported formats:
+  - CSV (`.csv`)
+  - Parquet (`.parquet`)
+
+### Notes
+- The dataset is **synthetic and not representative of real students**
+- It is designed to demonstrate:
+  - feature/target separation
+  - reproducible training
+  - batch prediction using a CLI-based ML system
+
+
 
 ## Quickstart
 
@@ -28,7 +61,7 @@ This writes a small demo feature table to:
 
 ### 3) Train a baseline model
 ```bash
-uv run ml-baseline train --target is_high_value
+uv run ml-baseline train --target grade
 ```
 
 Artifacts are written to:
@@ -37,20 +70,13 @@ Artifacts are written to:
 
 ### 4) Batch predict
 ```bash
-uv run ml-baseline predict --run latest --input data/processed/features.csv --output outputs/preds.csv
+uv run ml-baseline predict --run latest --input data/processed/features_infer.csv --output outputs/preds.csv
 ```
 
 ### 5) Tests
 ```bash
 uv run pytest
 ```
+The system is considered successful when training artifacts are saved under models/runs/, the latest run is registered, batch predictions are written to outputs/preds.csv, and all tests pass
 
 ---
-
-## What you submit
-- working code (`src/`)
-- passing tests (`tests/`)
-- updated `reports/model_card.md` (filled in)
-- updated `reports/eval_summary.md` (filled in)
-
-See `architecture.md` for minimum requirements + stretch goals.

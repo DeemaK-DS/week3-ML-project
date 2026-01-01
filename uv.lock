@@ -1442,6 +1442,8 @@ dependencies = [
     { name = "joblib" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "pyarrow" },
+    { name = "pytest" },
     { name = "scikit-learn" },
     { name = "typer" },
 ]
@@ -1472,7 +1474,9 @@ requires-dist = [
     { name = "numpy", specifier = ">=1.24" },
     { name = "pandas", specifier = ">=2.0" },
     { name = "plotly", marker = "extra == 'viz'", specifier = ">=5.0" },
+    { name = "pyarrow", specifier = ">=22.0.0" },
     { name = "pyarrow", marker = "extra == 'parquet'", specifier = ">=12" },
+    { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.6" },
     { name = "scikit-learn", specifier = ">=1.2" },

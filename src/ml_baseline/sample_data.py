@@ -20,8 +20,8 @@ def make_sample_feature_table(*, root: Path | None = None, n_users: int = 1000, 
     user_id = [f"u{i:03d}" for i in range(1, n_users + 1)]
     study_hours = rng.integers(0, 40, size=n_users)
     gender = rng.choice(["Male", "Female"], size=n_users)
-    Fedu = rng.choice(["None", "HighSchool", "Bachelor", "Master"],size=n_users,p=[0.2, 0.4, 0.25, 0.15],)
-    Medu = rng.choice(["None", "HighSchool", "Bachelor", "Master"],size=n_users,p=[0.2, 0.4, 0.25, 0.15],)
+    Fedu = rng.choice([ "HighSchool", "Bachelor", "Master"],size=n_users,p=[ 0.35, 0.4, 0.25],)
+    Medu = rng.choice([ "HighSchool", "Bachelor", "Master"],size=n_users,p=[ 0.4, 0.35, 0.25],)
 
     marks = (study_hours * 2 + rng.normal(50, 10, size=n_users)).clip(0, 100)
 

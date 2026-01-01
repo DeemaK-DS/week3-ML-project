@@ -14,7 +14,7 @@ def test_train_and_predict(tmp_path: Path) -> None:
     (root / "outputs").mkdir(parents=True)
 
     features_path = make_sample_feature_table(root=root, n_users=30)
-    cfg = TrainConfig(features_path=features_path, target="is_high_value")
+    cfg = TrainConfig(features_path=features_path, target="grade")
     run_dir = run_train(cfg, root=root)
 
     assert (run_dir / "model" / "model.joblib").exists()
